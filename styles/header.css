@@ -1,0 +1,51 @@
+#header__main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(47, 90, 131);
+  color: white;
+}
+
+#header__main h1 {
+  padding: 1rem 2.5rem;
+}
+
+#header__main h1 a {
+  text-decoration: none;
+  color: inherit;
+  text-shadow: 1px 1px 4px rgb(97, 99, 124);
+}
+
+#header__main #nav__main {
+  padding: 1rem 2.5rem;
+}
+
+#nav__main {
+  display: flex;
+}
+
+#nav__main ul {
+  display: flex;
+  list-style: none;
+}
+
+#nav__main ul li {
+  padding: 0 1rem;
+}
+
+#nav__main ul li a {
+  text-decoration: none;
+  color: white;
+  font-family: inherit;
+  font-weight: bold;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid transparent;
+}
+
+#nav__main ul li a.active {
+  border-color: rgb(35, 210, 223);
+}
+
+#nav__main ul li a:hover {
+  border-color: rgb(35, 210, 223);
+}

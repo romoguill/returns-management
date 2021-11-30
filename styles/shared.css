@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.basic-main {
+  width: 60%;
+  margin: 3rem auto 0 auto;
+  background-color: rgb(200, 209, 233);
+  height: 80vh;
+  box-shadow: 1px 1px 4px #aaa;
+  color: #333;
+  padding: 0 2rem;
+}
