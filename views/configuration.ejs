@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head') %>
+    <link rel="stylesheet" href="/styles/header.css" />
+    <link rel="stylesheet" href="/styles/table.css" />
+    <link rel="stylesheet" href="/styles/configuration.css" />
+  </head>
+  <body>
+    <%- include('partials/header', {activeItem: "configuration"}) %>
+
+    <main>
+      <section id="configuration">
+        <div class="filters__container">
+          <form action="">
+            <div class="form__filters">
+              <label for="client">Client</label>
+              <input type="text" name="client" id="client" />
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <div class="table__container">
+        <div class="table">
+          <span class="table__header">Client</span>
+          <span class="table__header">Container Warning</span>
+          <span class="table__header">Container Max</span>
+          <span class="table__header">Bulk Warning</span>
+          <span class="table__header">Bulk Max</span>
+          <span class="table__header">Cart Warning</span>
+          <span class="table__header">Cart Max</span>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

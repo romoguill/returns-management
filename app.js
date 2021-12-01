@@ -4,6 +4,7 @@ const express = require('express');
 
 const db = require('./data/database');
 const movements = require('./routes/movementsRoute');
+const configuration = require('./routes/configurationRoute');
 
 const app = express();
 
@@ -18,7 +19,9 @@ app.use(express.urlencoded({ extended: false }));
 // Serve static files
 app.use(express.static('public'));
 
+// Routes Middleware
 app.use(movements);
+app.use(configuration);
 
 db.connectToDatabase().then(() => {
   app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
