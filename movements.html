@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles/shared.css" />
     <link rel="stylesheet" href="styles/variables.css" />
     <link rel="stylesheet" href="styles/header.css" />
-    <link rel="stylesheet" href="styles/movements.css" />
+    <link rel="stylesheet" href="styles/table.css" />
 
     <script src="scripts/test-data.js" defer></script>
     <script src="scripts/populate-test-movements.js" defer></script>
@@ -28,20 +28,143 @@
       </nav>
     </header>
 
-    <main class="basic-main">
+    <main>
       <section id="movements">
-        <table id="table__movements">
-          <thead>
-            <tr>
-              <td>ID</td>
-              <td>Product ID</td>
-              <td>Origin</td>
-              <td>Destination</td>
-              <td>Date</td>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+        <div class="filters__container">
+          <form action="">
+            <div class="form__filters">
+              <label for="productId">Product ID</label>
+              <input type="text" name="productId" id="productId" />
+            </div>
+            <div class="form__filters">
+              <label for="client">Client</label>
+              <input type="text" name="client" id="client" />
+            </div>
+            <div class="form__filters">
+              <label for="flow">Flow</label>
+              <input type="text" name="flow" id="flow" />
+            </div>
+            <div class="form__filters">
+              <label for="status">Status</label>
+              <input type="text" name="status" id="status" />
+            </div>
+            <div class="date__filters">
+              <div class="form__filters">
+                <label for="dateStart">Date Start</label>
+                <input type="date" name="dateStart" id="dateStart" />
+              </div>
+              <div class="form__filters">
+                <label for="dateEnd">Date End</label>
+                <input type="date" name="dateEnd" id="dateEnd" />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="table__container">
+
+          <div class="table">
+
+            <span class="table__header">ID</span>
+            <span class="table__header">Product ID</span>
+            <span class="table__header">Client</span>
+            <span class="table__header">Flow</span>
+            <span class="table__header">Status</span>
+            <span class="table__header">Date</span>
+          
+            <span class="dark">1</span>
+            <span class="dark">2342</span>
+            <span class="dark">Client A</span>
+            <span class="dark">Outbound</span>
+            <span class="dark">On time</span>
+            <span class="dark">02/04/2021</span>
+          
+            <span>2</span>
+            <span>4224</span>
+            <span>Client C</span>
+            <span>Inbound</span>
+            <span>Delivered</span>
+            <span>20/04/2021</span>
+          
+            <span class="dark">3</span>
+            <span class="dark">4231</span>
+            <span class="dark">Client B</span>
+            <span class="dark">Inbound</span>
+            <span class="dark">Delivered</span>
+            <span class="dark">30/04/2021</span>
+         
+            <span>4</span>
+            <span>4234</span>
+            <span>Client G</span>
+            <span>Outbound</span>
+            <span>Fail</span>
+            <span>02/05/2021</span>
+        
+            <span class="dark">5</span>
+            <span class="dark">7342</span>
+            <span class="dark">Client B</span>
+            <span class="dark">Inbound</span>
+            <span class="dark">Delivered</span>
+            <span class="dark">15/05/2021</span>
+      
+          </div>
+
+
+          <!-- <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Product ID</th>
+                <th>Client</th>
+                <th>Flow</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>2342</td>
+                <td>Client A</td>
+                <td>Outbound</td>
+                <td>On time</td>
+                <td>02/04/2021</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>4224</td>
+                <td>Client C</td>
+                <td>Inbound</td>
+                <td>Delivered</td>
+                <td>20/04/2021</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>4231</td>
+                <td>Client B</td>
+                <td>Inbound</td>
+                <td>Delivered</td>
+                <td>30/04/2021</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>4234</td>
+                <td>Client G</td>
+                <td>Outbound</td>
+                <td>Fail</td>
+                <td>02/05/2021</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>7342</td>
+                <td>Client B</td>
+                <td>Inbound</td>
+                <td>Delivered</td>
+                <td>15/05/2021</td>
+              </tr>
+            </tbody>
+          </table> -->
+          </div>
+        </div>
       </section>
     </main>
   </body>

@@ -1,33 +1,3 @@
 body {
   background-color: rgb(231, 233, 238);
 }
-
-#table__movements {
-  margin: 0 auto;
-  width: 100%;
-  text-align: center;
-  color: #333;
-  border-radius: 5px;
-  padding: 1rem;
-  height: 40px;
-}
-
-#table__movements thead {
-  border-bottom: 2px solid #222;
-}
-
-#table__movements thead td {
-  padding-bottom: 0.25rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 1.1rem;
-  color: #222;
-}
-
-#table__movements tbody {
-}
-
-#table__movements tbody td {
-  padding-bottom: 0.124rem;
-  height: 1rem;
-}
