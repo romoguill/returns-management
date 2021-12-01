@@ -4,9 +4,17 @@
     <%- include('partials/head') %>
     <link rel="stylesheet" href="/styles/header.css" />
     <link rel="stylesheet" href="/styles/table.css" />
+    <link rel="stylesheet" href="/styles/movements.css">
+
+    <script src="https://kit.fontawesome.com/f70dfefa83.js" crossorigin="anonymous"></script>
+    <script src="/scripts/movements-modal.js" defer></script>
   </head>
   <body>
     <%- include('partials/header') %>
+
+    <!-- Div used for backdrop when the modal is open -->
+    <div id="backdrop"></div>
+
     <main>
       <section id="movements">
         <div class="filters__container">
@@ -47,7 +55,6 @@
             <span class="table__header">Flow</span>
             <span class="table__header">Status</span>
             <% let counter = 0; for (const movement of movements) { %>
-              <% console.log(counter % 2 === 0 && "dark" ) %>
             <span class=<%= counter % 2 === 0 && "dark" %>
               ><%= movement.date.toLocaleDateString('en-US', { day: '2-digit',
               month: '2-digit', year: 'numeric' }) %></span
@@ -61,21 +68,32 @@
           </div>
         </div>
       </section>
-      <form id="add__movement" action="/movements" method="POST">
-        <div class="form__filters">
-          <label for="productId">Product ID</label>
-          <input type="text" name="productId" id="productId" />
-        </div>
-        <div class="form__filters">
-          <label for="client">Client</label>
-          <input type="text" name="client" id="client" />
-        </div>
-        <div class="form__filters">
-          <label for="flow">Flow</label>
-          <input type="text" name="flow" id="flow" />
-        </div>
-        <button>Add movement</button>
-      </form>
+
+      <!-- Button for adding post. Will open up the form__modal -->
+      <button id="button__create-movement"><i class="fas fa-plus-circle"></i></button>
+
+      <!-- MODAL -->
+      <aside id="form__modal">
+        <form id="add__movement" action="/movements" method="POST">
+          <div class="form__controls">
+            <label for="productId">Product ID</label>
+            <input type="text" name="productId" id="productId" />
+          </div>
+          <div class="form__controls">
+            <label for="client">Client</label>
+            <input type="text" name="client" id="client" />
+          </div>
+          <div class="form__controls">
+            <label for="flow">Flow</label>
+            <input type="text" name="flow" id="flow" />
+          </div>
+          <div class="button__container">
+            <button class="btn btn-primary">Add movement</button>
+            <button type="reset" id="btn-cancel" class="btn btn-secondary">Cancel</button>
+          </div>
+        </form>
+      </aside>
+
     </main>
   </body>
 </html>

@@ -2,7 +2,6 @@ const Movement = require('../models/movement');
 
 async function getMovements(req, res) {
   const movements = await Movement.fetchAll();
-  console.log(movements);
   res.render('movements', { movements: movements });
 }
 

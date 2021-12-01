@@ -17,3 +17,18 @@ body {
   color: #333;
   padding: 0 2rem;
 }
+
+.btn {
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--color-blue-dark);
+  color: white;
+}
+
+.btn-secondary {
+  color: var(--color-blue-dark);
+}

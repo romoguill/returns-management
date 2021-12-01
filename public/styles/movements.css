@@ -1,3 +1,71 @@
 body {
   background-color: rgb(231, 233, 238);
 }
+
+#button__create-movement {
+  position: absolute;
+  top: 115px;
+  right: 30px;
+  font-size: 4rem;
+  border: none;
+  color: rgb(66, 167, 66);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#button__create-movement:hover {
+  color: rgb(60, 161, 60);
+}
+
+#button__create-movement:active {
+  transform: scale(0.98);
+}
+
+/* MODAL */
+
+#form__modal {
+  width: 300px;
+  background-color: var(--color-blue-light);
+  padding: 1.5rem 2rem;
+  border-radius: 5px;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  z-index: 1000;
+}
+
+#form__modal .form__controls {
+  margin: 1rem 0;
+}
+
+#form__modal label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+#form__modal input {
+  padding: 0.3rem;
+}
+
+.button__container {
+  margin: 1.5rem 0 0 0;
+}
+
+.button__container .btn {
+  margin: 0 0.2rem;
+}
+
+#backdrop {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  display: none;
+}
