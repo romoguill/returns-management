@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head') %>
+    <link rel="stylesheet" href="/styles/header.css" />
+    <link rel="stylesheet" href="/styles/table.css" />
+  </head>
+  <body>
+    <%- include('partials/header') %>
+    <main>
+      <section id="movements">
+        <div class="filters__container">
+          <form action="">
+            <div class="form__filters">
+              <label for="productId">Product ID</label>
+              <input type="text" name="productId" id="productId" />
+            </div>
+            <div class="form__filters">
+              <label for="client">Client</label>
+              <input type="text" name="client" id="client" />
+            </div>
+            <div class="date__filters">
+              <div class="form__filters">
+                <label for="dateStart">Date Start</label>
+                <input type="date" name="dateStart" id="dateStart" />
+              </div>
+              <div class="form__filters">
+                <label for="dateEnd">Date End</label>
+                <input type="date" name="dateEnd" id="dateEnd" />
+              </div>
+            </div>
+            <div class="form__filters">
+              <label for="flow">Flow</label>
+              <input type="text" name="flow" id="flow" />
+            </div>
+            <div class="form__filters">
+              <label for="status">Status</label>
+              <input type="text" name="status" id="status" />
+            </div>
+          </form>
+        </div>
+        <div class="table__container">
+          <div class="table">
+            <span class="table__header">Date</span>
+            <span class="table__header">Product ID</span>
+            <span class="table__header">Client</span>
+            <span class="table__header">Flow</span>
+            <span class="table__header">Status</span>
+            <% let counter = 0; for (const movement of movements) { %>
+              <% console.log(counter % 2 === 0 && "dark" ) %>
+            <span class=<%= counter % 2 === 0 && "dark" %>
+              ><%= movement.date.toLocaleDateString('en-US', { day: '2-digit',
+              month: '2-digit', year: 'numeric' }) %></span
+            >
+            <span class=<%= counter % 2 === 0 && "dark" %>><%= movement.productId %></span>
+            <span class=<%= counter % 2 === 0 && "dark" %>><%= movement.client %></span>
+            <span class=<%= counter % 2 === 0 && "dark" %>><%= movement.flow %></span>
+            <span class=<%= counter % 2 === 0 && "dark" %>></span>
+            <% counter++ %>
+            <% }; %>
+          </div>
+        </div>
+      </section>
+      <form id="add__movement" action="/movements" method="POST">
+        <div class="form__filters">
+          <label for="productId">Product ID</label>
+          <input type="text" name="productId" id="productId" />
+        </div>
+        <div class="form__filters">
+          <label for="client">Client</label>
+          <input type="text" name="client" id="client" />
+        </div>
+        <div class="form__filters">
+          <label for="flow">Flow</label>
+          <input type="text" name="flow" id="flow" />
+        </div>
+        <button>Add movement</button>
+      </form>
+    </main>
+  </body>
+</html>
