@@ -16,6 +16,8 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Parse url
 app.use(express.urlencoded({ extended: false }));
+// Parse json
+app.use(express.json());
 // Serve static files
 app.use(express.static('public'));
 

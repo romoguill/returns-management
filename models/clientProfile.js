@@ -2,34 +2,47 @@ const mongodb = require('mongodb');
 
 const db = require('../data/database');
 
+const ObjectId = mongodb.ObjectId;
+
 class ClientProfile {
-  constructor(client, config) {
+  constructor(client, config, id) {
     this.client = client;
     this.config = config;
+
+    if (id) {
+      this.id = new ObjectId(id);
+    }
   }
 
   static async fetchAll() {
-    return await db.getDb().collection('client-profiles').find({});
+    return await db.getDb().collection('clientProfiles').find({}).toArray();
   }
 
-  async fetch() {
-    return await db
-      .getDb()
-      .collection('client-profiles')
-      .findOne({ client: this.client });
+  async save() {
+    let result;
+    if (this.id) {
+      result = await db
+        .getDb()
+        .collection('clientProfiles')
+        .updateOne(
+          { _id: this.id },
+          { $set: { client: this.client, config: this.config } }
+        );
+    } else {
+      result = await db.getDb().collection('clientProfiles').insertOne({
+        client: this.client,
+        config: this.config,
+      });
+    }
+    return result;
   }
 
-  async create() {
-    return await db
+  async delete() {
+    const result = await db
       .getDb()
-      .collection('client-profiles')
-      .insertOne({ client: this.client, config: this.config });
-  }
-
-  async update() {
-    return await db
-      .getDb()
-      .collection('client-profiles')
-      .updateOne({ client: this.client }, { $set: { config: this.config } });
+      .collection('clientProfiles')
+      .deleteOne({ client: this.client });
   }
 }
+
+module.exports = ClientProfile;

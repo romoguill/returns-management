@@ -15,5 +15,34 @@
     minmax(100px, 1fr)
     minmax(100px, 1fr)
     minmax(100px, 1fr)
-    minmax(100px, 1fr);
+    minmax(100px, 1fr)
+    minmax(20px, 0.4fr);
+}
+
+.btn__edit-delete {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn__edit-delete button {
+  border: none;
+  font-size: 0.7rem;
+  background-color: transparent;
+  color: red;
+  cursor: pointer;
+}
+
+#button__create-config {
+  position: absolute;
+  top: 75px;
+  right: 30px;
+  font-size: 4rem;
+  border: none;
+  color: rgb(66, 167, 66);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#button__create-movement:hover {
+  color: rgb(60, 161, 60);
 }

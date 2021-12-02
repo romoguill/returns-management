@@ -6,8 +6,16 @@
     <link rel="stylesheet" href="/styles/table.css" />
     <link rel="stylesheet" href="/styles/configuration.css" />
   </head>
+
+  <script
+    src="https://kit.fontawesome.com/f70dfefa83.js"
+    crossorigin="anonymous"
+  ></script>
   <body>
     <%- include('partials/header', {activeItem: "configuration"}) %>
+
+    <!-- Div used for backdrop when the modal is open -->
+    <div id="backdrop"></div>
 
     <main>
       <section id="configuration">
@@ -30,8 +38,29 @@
           <span class="table__header">Bulk Max</span>
           <span class="table__header">Cart Warning</span>
           <span class="table__header">Cart Max</span>
+          <span class="table__header"></span>
+
+          <% for (const profile of clientProfiles) { %>
+          <span><%= profile.client %></span>
+          <span><%= profile.config.container.warning %></span>
+          <span><%= profile.config.container.max %></span>
+          <span><%= profile.config.bulk.warning %></span>
+          <span><%= profile.config.bulk.max %></span>
+          <span><%= profile.config.cart.warning %></span>
+          <span><%= profile.config.cart.max %></span>
+
+          <div class="btn__edit-delete" data-profileId="<%= profile._id %>">
+            <button><i class="fas fa-edit"></i></button>
+            <button><i class="fas fa-trash"></i></button>
+          </div>
+          <% } %>
         </div>
       </div>
+
+      <!-- Button for adding a configuration profile. Will open up the form__modal -->
+      <button id="button__create-config">
+        <i class="fas fa-plus-circle"></i>
+      </button>
     </main>
   </body>
 </html>

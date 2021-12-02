@@ -41,7 +41,7 @@
 /* TABLE */
 .table__container {
   width: 80%;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 2rem auto 3rem auto;
   max-height: 600px;
   overflow-y: scroll;
