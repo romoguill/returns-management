@@ -4,7 +4,12 @@ const clientProfileController = require('../controllers/clientProfileController'
 
 const router = express.Router();
 
-router.get('/configuration', clientProfileController.getClientProfiles);
+router.get(
+  '/configuration/api/profiles',
+  clientProfileController.getClientProfiles
+);
+
+router.get('/configuration', clientProfileController.renderConfiguration);
 
 router.post('/configuration', clientProfileController.createClientProfile);
 

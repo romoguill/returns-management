@@ -11,6 +11,9 @@
     src="https://kit.fontawesome.com/f70dfefa83.js"
     crossorigin="anonymous"
   ></script>
+
+  <script src="/scripts/modifyClientProfiles.js" defer></script>
+  <script src="/scripts/ajaxClientProfiles.js"></script>
   <body>
     <%- include('partials/header', {activeItem: "configuration"}) %>
 
@@ -30,7 +33,7 @@
       </section>
 
       <div class="table__container">
-        <div class="table">
+        <div id="table__configuration" class="table">
           <span class="table__header">Client</span>
           <span class="table__header">Container Warning</span>
           <span class="table__header">Container Max</span>
@@ -38,7 +41,7 @@
           <span class="table__header">Bulk Max</span>
           <span class="table__header">Cart Warning</span>
           <span class="table__header">Cart Max</span>
-          <span class="table__header"></span>
+          <span id="table__last-header" class="table__header"></span>
 
           <% for (const profile of clientProfiles) { %>
           <span><%= profile.client %></span>
@@ -49,9 +52,19 @@
           <span><%= profile.config.cart.warning %></span>
           <span><%= profile.config.cart.max %></span>
 
-          <div class="btn__edit-delete" data-profileId="<%= profile._id %>">
-            <button><i class="fas fa-edit"></i></button>
-            <button><i class="fas fa-trash"></i></button>
+          <div class="btn__edit-delete">
+            <button
+              class="btn__edit-client-profile"
+              data-profileid="<%= profile._id %>"
+            >
+              <i class="fas fa-edit"></i>
+            </button>
+            <button
+              class="btn__delete-client-profile"
+              data-profileid="<%= profile._id %>"
+            >
+              <i class="fas fa-trash"></i>
+            </button>
           </div>
           <% } %>
         </div>

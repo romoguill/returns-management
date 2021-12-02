@@ -41,7 +41,7 @@ class ClientProfile {
     const result = await db
       .getDb()
       .collection('clientProfiles')
-      .deleteOne({ client: this.client });
+      .deleteOne({ _id: this.id });
   }
 }
 
