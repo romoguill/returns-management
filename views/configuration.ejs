@@ -13,7 +13,8 @@
   ></script>
 
   <script src="/scripts/modifyClientProfiles.js" defer></script>
-  <script src="/scripts/ajaxClientProfiles.js"></script>
+  <script src="/scripts/ajaxClientProfiles.js" defer></script>
+  <script src="/scripts/renderClientProfiles.js" defer></script>
   <body>
     <%- include('partials/header', {activeItem: "configuration"}) %>
 
@@ -41,32 +42,7 @@
           <span class="table__header">Bulk Max</span>
           <span class="table__header">Cart Warning</span>
           <span class="table__header">Cart Max</span>
-          <span id="table__last-header" class="table__header"></span>
-
-          <% for (const profile of clientProfiles) { %>
-          <span><%= profile.client %></span>
-          <span><%= profile.config.container.warning %></span>
-          <span><%= profile.config.container.max %></span>
-          <span><%= profile.config.bulk.warning %></span>
-          <span><%= profile.config.bulk.max %></span>
-          <span><%= profile.config.cart.warning %></span>
-          <span><%= profile.config.cart.max %></span>
-
-          <div class="btn__edit-delete">
-            <button
-              class="btn__edit-client-profile"
-              data-profileid="<%= profile._id %>"
-            >
-              <i class="fas fa-edit"></i>
-            </button>
-            <button
-              class="btn__delete-client-profile"
-              data-profileid="<%= profile._id %>"
-            >
-              <i class="fas fa-trash"></i>
-            </button>
-          </div>
-          <% } %>
+          <span class="table__header"></span>
         </div>
       </div>
 

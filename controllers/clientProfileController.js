@@ -34,9 +34,8 @@ async function updateClientProfile(req, res) {
 
 async function deleteClientProfile(req, res) {
   const clientProfile = new ClientProfile(null, null, req.params.id);
-  await clientProfile.delete();
-  const clientProfiles = await ClientProfile.fetchAll();
-  res.json(clientProfiles);
+  const result = await clientProfile.delete();
+  res.json(result);
 }
 
 module.exports = {
