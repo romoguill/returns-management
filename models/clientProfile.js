@@ -18,6 +18,14 @@ class ClientProfile {
     return await db.getDb().collection('clientProfiles').find({}).toArray();
   }
 
+  async fetchProfile() {
+    console.log(this.is);
+    return await db
+      .getDb()
+      .collection('clientProfiles')
+      .findOne({ _id: this.id });
+  }
+
   async save() {
     let result;
     if (this.id) {
@@ -42,6 +50,7 @@ class ClientProfile {
       .getDb()
       .collection('clientProfiles')
       .deleteOne({ _id: this.id });
+    return result;
   }
 }
 

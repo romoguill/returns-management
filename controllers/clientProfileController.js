@@ -12,9 +12,22 @@ async function getClientProfiles(req, res) {
   res.json(clientProfiles);
 }
 
+async function getSingleClientProfile(req, res) {
+  const profile = new ClientProfile(null, null, req.params.id);
+  const clientProfile = await profile.fetchProfile();
+  res.json(clientProfile);
+}
+
 async function createClientProfile(req, res) {
   const { client, config } = req.body;
   const clientProfile = new ClientProfile(client, config);
+  const result = await clientProfile.save();
+  res.json(result);
+}
+
+async function updateClientProfile(req, res) {
+  const { client, config } = req.body;
+  const clientProfile = new ClientProfile(client, config, req.params.id);
   const result = await clientProfile.save();
   res.json(result);
 }
@@ -29,6 +42,8 @@ async function deleteClientProfile(req, res) {
 module.exports = {
   renderConfiguration,
   getClientProfiles,
+  getSingleClientProfile,
   createClientProfile,
+  updateClientProfile,
   deleteClientProfile,
 };
