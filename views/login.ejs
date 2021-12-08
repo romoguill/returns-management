@@ -9,10 +9,10 @@
 </head>
 
 <body>
-  <%- include('partials/header', {activeItem: "dashboard" }) %>
+  <%- include('partials/header', {activeItem: "none" }) %>
 
     <main>
-      <form id="login-form" action="/login" method="POST">
+      <form id="form" action="/login" method="POST">
         <h2 class="form__heading">Login to App</h2>
         <div class="form__control">
           <label for="email">Email</label>

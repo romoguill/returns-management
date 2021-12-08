@@ -1,4 +1,4 @@
-form {
+#form {
   font-family: sans-serif;
   text-align: center;
   width: 20rem;
@@ -11,35 +11,35 @@ form {
   padding: var(--space-6);
 }
 
-form .form__control {
+#form .form__control {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: var(--space-2);
 }
 
-form .form__heading {
+#form .form__heading {
   font-size: 1.5rem;
   padding: var(--space-2);
 }
 
-form .form__control input,
-form .form__control label,
-form .form__control textarea {
+#form .form__control input,
+#form .form__control label,
+#form .form__control textarea {
   width: 100%;
 }
 
-form .form__control label {
+#form .form__control label {
   font-weight: bold;
   margin: var(--space-1) 0;
 }
 
-form .form__control input {
+#form .form__control input {
   border-radius: var(--border-radius-small);
   border: none;
   padding: var(--space-1);
 }
 
-form p {
+#form p {
   font-size: 0.8rem;
 }

@@ -5,6 +5,11 @@ function createUserSession(req, user, action) {
   req.session.save(action);
 }
 
+function destroyUserSession(req, action) {
+  req.session.destroy(action);
+}
+
 module.exports = {
   createUserSession,
+  destroyUserSession,
 };

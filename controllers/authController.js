@@ -1,11 +1,12 @@
 const User = require('../models/user');
 const authUtil = require('../utils/authentication');
 
+function getLogin(req, res) {
+  res.render('login');
+}
+
 async function login(req, res) {
   const { email, password } = req.body;
-  // req.session.email = email;
-  // req.session.password = password;
-  // req.session.save();
 
   const user = new User(email, password);
 
@@ -31,6 +32,12 @@ async function login(req, res) {
   authUtil.createUserSession(req, user, () => res.redirect('/dashboard'));
 }
 
+function logout(req, res) {
+  authUtil.destroyUserSession(req, () => res.redirect('/login'));
+}
+
 module.exports = {
+  getLogin,
   login,
+  logout,
 };

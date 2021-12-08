@@ -27,7 +27,6 @@ function createSessionConfig() {
     saveUninitialized: false,
     store: createSessionStore(),
     cookie: {
-      secure: true,
       // cookie exires after 1 day (expressed in milliseconds)
       maxAge: 1000 * 60 * 60 * 24,
     },

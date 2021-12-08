@@ -49,3 +49,13 @@
 #nav__main ul li a:hover {
   border-color: rgb(35, 210, 223);
 }
+
+#logout-btn {
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  font-weight: bold;
+  color: rgb(197, 197, 197);
+}
