@@ -19,6 +19,7 @@ async function getSingleClientProfile(req, res) {
 }
 
 async function createClientProfile(req, res) {
+  console.log(req.body);
   const { client, config } = req.body;
   const clientProfile = new ClientProfile(client, config);
   const result = await clientProfile.save();

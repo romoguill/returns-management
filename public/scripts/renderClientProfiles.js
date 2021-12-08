@@ -57,6 +57,7 @@ function addDeleteFunctionality() {
   const btnsDeleteElements = tableConfigurationElement.querySelectorAll(
     '.btn__delete-client-profile'
   );
+
   btnsDeleteElements.forEach((btn) => {
     btn.addEventListener('click', async () => {
       detleteProfile(btn);

@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('partials/head') %>
+
+<head>
+  <%- include('partials/head') %>
     <link rel="stylesheet" href="/styles/header.css" />
     <link rel="stylesheet" href="/styles/table.css" />
     <link rel="stylesheet" href="/styles/configuration.css" />
-  </head>
+</head>
 
-  <script
-    src="https://kit.fontawesome.com/f70dfefa83.js"
-    crossorigin="anonymous"
-  ></script>
+<script src="https://kit.fontawesome.com/f70dfefa83.js" crossorigin="anonymous"></script>
 
-  <script src="/scripts/modifyClientProfiles.js" defer></script>
-  <script src="/scripts/ajaxClientProfiles.js" defer></script>
-  <script src="/scripts/renderClientProfiles.js" defer></script>
-  <body>
-    <%- include('partials/header', {activeItem: "configuration"}) %>
+<script src="/scripts/modifyClientProfiles.js" defer></script>
+<script src="/scripts/ajaxClientProfiles.js" defer></script>
+<script src="/scripts/renderClientProfiles.js" defer></script>
+<script src="/scripts/configuration-modal.js" defer></script>
+
+<body>
+  <%- include('partials/header', {activeItem: "configuration" }) %>
 
     <!-- Div used for backdrop when the modal is open -->
     <div id="backdrop"></div>
@@ -50,6 +50,47 @@
       <button id="button__create-config">
         <i class="fas fa-plus-circle"></i>
       </button>
+
+      <!-- MODAL -->
+      <aside id="form__modal">
+        <form id="add__profile" action="/configuration/api/profiles" method="POST">
+          <div class="form__controls">
+            <label for="client">Client</label>
+            <input type="text" name="client" id="client" />
+          </div>
+          <div class="form__controls">
+            <label for="container-warning">Container Warning</label>
+            <input type="text" name="container-warning" id="container-warning" />
+          </div>
+          <div class="form__controls">
+            <label for="container-max">Container Max</label>
+            <input type="text" name="container-max" id="container-max" />
+          </div>
+          <div class="form__controls">
+            <label for="bulk-warning">Bulk Warning</label>
+            <input type="text" name="bulk-warning" id="bulk-warning" />
+          </div>
+          <div class="form__controls">
+            <label for="bulk-max">Bulk Max</label>
+            <input type="text" name="bulk-max" id="bulk-max" />
+          </div>
+          <div class="form__controls">
+            <label for="cart-warning">Cart Warning</label>
+            <input type="text" name="cart-warning" id="cart-warning" />
+          </div>
+          <div class="form__controls">
+            <label for="cart-max">Cart Max</label>
+            <input type="text" name="cart-max" id="cart-max" />
+          </div>
+          <div class="button__container">
+            <button class="btn btn-primary">Add movement</button>
+            <button type="reset" id="btn-cancel" class="btn btn-secondary">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </aside>
     </main>
-  </body>
+</body>
+
 </html>

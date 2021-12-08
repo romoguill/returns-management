@@ -3,8 +3,9 @@ const path = require('path');
 const express = require('express');
 
 const db = require('./data/database');
-const movements = require('./routes/movementsRoute');
-const configuration = require('./routes/configurationRoute');
+const movementsRoute = require('./routes/movementsRoute');
+const configurationRoute = require('./routes/configurationRoute');
+const dashboardRoute = require('./routes/dashboardRoute');
 
 const app = express();
 
@@ -22,8 +23,9 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Routes Middleware
-app.use(movements);
-app.use(configuration);
+app.use(dashboardRoute);
+app.use(movementsRoute);
+app.use(configurationRoute);
 
 db.connectToDatabase().then(() => {
   app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
