@@ -44,3 +44,13 @@ body {
   z-index: 999;
   display: none;
 }
+
+#logout-btn {
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  font-weight: bold;
+  color: #aaa;
+}

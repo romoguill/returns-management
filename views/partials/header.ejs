@@ -5,7 +5,12 @@
       <li><a href="/dashboard" class=<%=activeItem==="dashboard" && "active" %>>Dashboard</a></li>
       <li><a href="/movements" class=<%=activeItem==="movements" && "active" %>>Movements</a></li>
       <li><a href="/configuration" class=<%=activeItem==="configuration" && "active" %>>Configuration</a></li>
-      <li><a href="about" class=<%=activeItem==="about" && "active" %>>About</a></li>
+      <li><a href="/about" class=<%=activeItem==="about" && "active" %>>About</a></li>
+      <li>
+        <form action="/logout" method="POST">
+          <button id="logout-btn">Logout</button>
+        </form>
+      </li>
     </ul>
   </nav>
 </header>

@@ -8,8 +8,12 @@ class User {
     this.password = password;
   }
 
-  async findByEmail(email) {
-    const user = await db.getDb().collection('users').find({ email });
+  async findByEmail() {
+    return await db.getDb().collection('users').findOne({ email: this.email });
+  }
+
+  isPasswordCorrect(password) {
+    return password === this.password;
   }
 }
 
