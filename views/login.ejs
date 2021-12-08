@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('partials/head') %>
+
+    <link rel="stylesheet" href="/styles/header.css" />
+    <link rel="stylesheet" href="/styles/form-base.css">
+</head>
+
+<body>
+  <%- include('partials/header', {activeItem: "dashboard" }) %>
+
+    <main>
+      <form id="login-form" action="">
+        <h2 class="form__heading">Login to App</h2>
+        <div class="form__control">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" required>
+        </div>
+        <div class="form__control">
+          <label for="email">Password</label>
+          <input type="password" name="password" id="password" required>
+        </div>
+        <p>Forgot your password? <a href="#">Click here</a></p>
+      </form>
+
+
+    </main>
+</body>
+
+</html>

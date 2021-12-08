@@ -1,0 +1,45 @@
+form {
+  font-family: sans-serif;
+  text-align: center;
+  width: 20rem;
+  background-color: var(--color-blue-light);
+  border-radius: var(--border-radius-medium);
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--space-6);
+}
+
+form .form__control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-2);
+}
+
+form .form__heading {
+  font-size: 1.5rem;
+  padding: var(--space-2);
+}
+
+form .form__control input,
+form .form__control label,
+form .form__control textarea {
+  width: 100%;
+}
+
+form .form__control label {
+  font-weight: bold;
+  margin: var(--space-1) 0;
+}
+
+form .form__control input {
+  border-radius: var(--border-radius-small);
+  border: none;
+  padding: var(--space-1);
+}
+
+form p {
+  font-size: 0.8rem;
+}

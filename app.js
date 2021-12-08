@@ -6,6 +6,7 @@ const db = require('./data/database');
 const movementsRoute = require('./routes/movementsRoute');
 const configurationRoute = require('./routes/configurationRoute');
 const dashboardRoute = require('./routes/dashboardRoute');
+const loginRoute = require('./routes/loginRoute');
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Routes Middleware
+app.use(loginRoute);
 app.use(dashboardRoute);
 app.use(movementsRoute);
 app.use(configurationRoute);
