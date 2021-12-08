@@ -1,8 +1,10 @@
 const path = require('path');
 
 const express = require('express');
+const expressSession = require('express-session');
 
 const db = require('./data/database');
+const createSessionConfig = require('./session-config');
 const movementsRoute = require('./routes/movementsRoute');
 const configurationRoute = require('./routes/configurationRoute');
 const dashboardRoute = require('./routes/dashboardRoute');
@@ -11,6 +13,12 @@ const loginRoute = require('./routes/loginRoute');
 const app = express();
 
 const PORT = 3000;
+
+// Create the session config object
+const sessionConfig = createSessionConfig();
+
+// Session middleware
+app.use(expressSession(sessionConfig));
 
 // Set up templating engine
 app.set('view engine', 'ejs');

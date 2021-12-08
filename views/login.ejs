@@ -12,7 +12,7 @@
   <%- include('partials/header', {activeItem: "dashboard" }) %>
 
     <main>
-      <form id="login-form" action="">
+      <form id="login-form" action="/login" method="POST">
         <h2 class="form__heading">Login to App</h2>
         <div class="form__control">
           <label for="email">Email</label>
@@ -22,6 +22,7 @@
           <label for="email">Password</label>
           <input type="password" name="password" id="password" required>
         </div>
+        <button class="btn">Login</button>
         <p>Forgot your password? <a href="#">Click here</a></p>
       </form>
 
