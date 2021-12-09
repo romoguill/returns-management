@@ -19,7 +19,6 @@ class ClientProfile {
   }
 
   async fetchProfile() {
-    console.log(this.is);
     return await db
       .getDb()
       .collection('clientProfiles')

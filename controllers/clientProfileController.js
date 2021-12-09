@@ -20,10 +20,28 @@ async function getSingleClientProfile(req, res) {
 
 async function createClientProfile(req, res) {
   console.log(req.body);
-  const { client, config } = req.body;
+  const {
+    client,
+    containerWarning,
+    containerMax,
+    bulkWarning,
+    bulkMax,
+    cartWarning,
+    cartMax,
+  } = req.body;
+
+  const config = {
+    containerWarning,
+    containerMax,
+    bulkWarning,
+    bulkMax,
+    cartWarning,
+    cartMax,
+  };
+
   const clientProfile = new ClientProfile(client, config);
   const result = await clientProfile.save();
-  res.json(result);
+  res.redirect('/configuration');
 }
 
 async function updateClientProfile(req, res) {

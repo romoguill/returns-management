@@ -21,6 +21,7 @@ async function renderProfiles() {
   `;
 
   clientProfiles.forEach((profile) => {
+    console.log(profile);
     templateRows += `
       <span>${profile.client}</span>
       <span>${profile.config.container.warning}</span>

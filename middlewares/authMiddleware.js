@@ -1,6 +1,5 @@
 function verifyCredentials(req, res, next) {
   // Check if user is logged in by checking if the session has an user property
-  console.log(req.session);
   if (!req.session.user) {
     return res.status(401).redirect('/login');
   }

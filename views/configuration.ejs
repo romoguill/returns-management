@@ -4,7 +4,8 @@
 <head>
   <%- include('partials/head') %>
     <link rel="stylesheet" href="/styles/header.css" />
-    <link rel="stylesheet" href="/styles/table.css" />
+    <link rel="stylesheet" href="/styles/table-base.css" />
+    <link rel="stylesheet" href="/styles/filters-base.css">
     <link rel="stylesheet" href="/styles/configuration.css" />
 </head>
 
@@ -12,7 +13,7 @@
 
 <script src="/scripts/modifyClientProfiles.js" defer></script>
 <script src="/scripts/ajaxClientProfiles.js" defer></script>
-<script src="/scripts/renderClientProfiles.js" defer></script>
+<!-- <script src="/scripts/renderClientProfiles.js" defer></script> -->
 <script src="/scripts/configuration-modal.js" defer></script>
 
 <body>
@@ -34,16 +35,46 @@
       </section>
 
       <div class="table__container">
-        <div id="table__configuration" class="table">
-          <span class="table__header">Client</span>
-          <span class="table__header">Container Warning</span>
-          <span class="table__header">Container Max</span>
-          <span class="table__header">Bulk Warning</span>
-          <span class="table__header">Bulk Max</span>
-          <span class="table__header">Cart Warning</span>
-          <span class="table__header">Cart Max</span>
-          <span class="table__header"></span>
-        </div>
+        <table id="table__configuration">
+          <thead>
+            <tr>
+              <th>Client</th>
+              <th>Container Warning</th>
+              <th>Container Max</th>
+              <th>Bulk Warning</th>
+              <th>Bulk Max</th>
+              <th>Cart Warning</th>
+              <th>Cart Max</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (const profile of clientProfiles) { %>
+              <tr>
+                <td>
+                  <%= profile.client %>
+                </td>
+                <td>
+                  <%= profile.config.containerWarning %>
+                </td>
+                <td>
+                  <%= profile.config.containerMax %>
+                </td>
+                <td>
+                  <%= profile.config.bulkWarning %>
+                </td>
+                <td>
+                  <%= profile.config.bulkMax %>
+                </td>
+                <td>
+                  <%= profile.config.cartWarning %>
+                </td>
+                <td>
+                  <%= profile.config.cartMax %>
+                </td>
+              </tr>
+              <% } %>
+          </tbody>
+        </table>
       </div>
 
       <!-- Button for adding a configuration profile. Will open up the form__modal -->
@@ -59,31 +90,31 @@
             <input type="text" name="client" id="client" />
           </div>
           <div class="form__controls">
-            <label for="container-warning">Container Warning</label>
-            <input type="text" name="container-warning" id="container-warning" />
+            <label for="containerWarning">Container Warning</label>
+            <input type="text" name="containerWarning" id="containerWarning" />
           </div>
           <div class="form__controls">
-            <label for="container-max">Container Max</label>
-            <input type="text" name="container-max" id="container-max" />
+            <label for="containerMax">Container Max</label>
+            <input type="text" name="containerMax" id="containerMax" />
           </div>
           <div class="form__controls">
-            <label for="bulk-warning">Bulk Warning</label>
-            <input type="text" name="bulk-warning" id="bulk-warning" />
+            <label for="bulkWarning">Bulk Warning</label>
+            <input type="text" name="bulkWarning" id="bulkWarning" />
           </div>
           <div class="form__controls">
-            <label for="bulk-max">Bulk Max</label>
-            <input type="text" name="bulk-max" id="bulk-max" />
+            <label for="bulkMax">Bulk Max</label>
+            <input type="text" name="bulkMax" id="bulkMax" />
           </div>
           <div class="form__controls">
-            <label for="cart-warning">Cart Warning</label>
-            <input type="text" name="cart-warning" id="cart-warning" />
+            <label for="cartWarning">Cart Warning</label>
+            <input type="text" name="cartWarning" id="cartWarning" />
           </div>
           <div class="form__controls">
-            <label for="cart-max">Cart Max</label>
-            <input type="text" name="cart-max" id="cart-max" />
+            <label for="cartMax">Cart Max</label>
+            <input type="text" name="cartMax" id="cartMax" />
           </div>
           <div class="button__container">
-            <button class="btn btn-primary">Add movement</button>
+            <button class="btn btn-primary">Add profile</button>
             <button type="reset" id="btn-cancel" class="btn btn-secondary">
               Cancel
             </button>
