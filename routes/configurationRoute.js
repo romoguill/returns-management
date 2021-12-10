@@ -1,6 +1,6 @@
 const express = require('express');
 
-const clientProfileController = require('../controllers/clientProfileController');
+const configurationController = require('../controllers/configurationController');
 
 const router = express.Router();
 
@@ -9,40 +9,40 @@ const router = express.Router();
 // Get all profiles
 router.get(
   '/configuration/api/profiles',
-  clientProfileController.getClientProfiles
+  configurationController.getClientProfiles
 );
 
 // Get a single profile
 router.get(
   '/configuration/api/profiles/:id',
-  clientProfileController.getSingleClientProfile
+  configurationController.getSingleClientProfile
 );
 
 // Create a new profile
 router.post(
   '/configuration/api/profiles',
-  clientProfileController.createClientProfile
+  configurationController.createClientProfile
 );
 
 // Update a single profile
 router.patch(
   '/configuration/api/profiles/:id/edit',
-  clientProfileController.updateClientProfile
+  configurationController.updateClientProfile
 );
 
 // Delete a single profile
 router.delete(
   '/configuration/api/profiles/:id/delete',
-  clientProfileController.deleteClientProfile
+  configurationController.deleteClientProfile
 );
 
-router.get('/configuration', clientProfileController.renderConfiguration);
+router.get('/configuration', configurationController.renderConfiguration);
 
-router.post('/configuration', clientProfileController.createClientProfile);
+router.post('/configuration', configurationController.createClientProfile);
 
 router.post(
   '/configuration/:id/delete',
-  clientProfileController.deleteClientProfile
+  configurationController.deleteClientProfile
 );
 
 module.exports = router;

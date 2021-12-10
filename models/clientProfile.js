@@ -10,6 +10,7 @@ class ClientProfile {
     this.config = config;
 
     if (id) {
+      console.log(id.length);
       this.id = new ObjectId(id);
     }
   }
@@ -49,6 +50,7 @@ class ClientProfile {
       .getDb()
       .collection('clientProfiles')
       .deleteOne({ _id: this.id });
+    console.log(result);
     return result;
   }
 }

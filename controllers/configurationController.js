@@ -1,3 +1,5 @@
+const mongodb = require('mongodb');
+
 const ClientProfile = require('../models/clientProfile');
 
 async function renderConfiguration(req, res) {
@@ -53,6 +55,7 @@ async function updateClientProfile(req, res) {
 
 async function deleteClientProfile(req, res) {
   const clientProfile = new ClientProfile(null, null, req.params.id);
+  console.log(clientProfile);
   const result = await clientProfile.delete();
   res.json(result);
 }

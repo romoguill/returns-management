@@ -12,7 +12,7 @@
 <script src="https://kit.fontawesome.com/f70dfefa83.js" crossorigin="anonymous"></script>
 
 <script src="/scripts/modifyClientProfiles.js" defer></script>
-<script src="/scripts/ajaxClientProfiles.js" defer></script>
+<script src="/scripts/configuration-management.js" defer></script>
 <script src="/scripts/configuration-modal.js" defer></script>
 
 <body>
@@ -73,10 +73,10 @@
                 </td>
                 <td>
                   <div class="btn__edit-delete">
-                    <button class="btn__edit-client-profile" data-profileid="${profile._id}">
+                    <button class="btn__edit-client-profile" data-profileid="<%= profile._id %>">
                       <i class="fas fa-edit"></i>
                     </button>
-                    <button class="btn__delete-client-profile" data-profileid="${profile._id}">
+                    <button class="btn__delete-client-profile" data-profileid="<%= profile._id %>">
                       <i class="fas fa-trash"></i>
                     </button>
                   </div>
