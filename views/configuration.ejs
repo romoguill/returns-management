@@ -13,7 +13,6 @@
 
 <script src="/scripts/modifyClientProfiles.js" defer></script>
 <script src="/scripts/ajaxClientProfiles.js" defer></script>
-<!-- <script src="/scripts/renderClientProfiles.js" defer></script> -->
 <script src="/scripts/configuration-modal.js" defer></script>
 
 <body>
@@ -45,6 +44,7 @@
               <th>Bulk Max</th>
               <th>Cart Warning</th>
               <th>Cart Max</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -70,6 +70,16 @@
                 </td>
                 <td>
                   <%= profile.config.cartMax %>
+                </td>
+                <td>
+                  <div class="btn__edit-delete">
+                    <button class="btn__edit-client-profile" data-profileid="${profile._id}">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn__delete-client-profile" data-profileid="${profile._id}">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
                 </td>
               </tr>
               <% } %>
