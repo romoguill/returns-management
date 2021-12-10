@@ -24,7 +24,10 @@ btnOpenElement.addEventListener('click', () => {
 // for each edit btn icon open the same modal form
 btnsEditElements.forEach((btn) => {
   btn.addEventListener('click', () => {
+    // Use the data already stored to populate the form
     prePopulateForm(btn);
+    adaptFormForEditing();
+
     modalElement.style.display = 'block';
     backdropElement.style.display = 'block';
   });
@@ -40,6 +43,7 @@ backdropElement.addEventListener('click', () => {
   backdropElement.style.display = 'none';
 });
 
+// Get the info stored via AJAX call to api and populate form
 async function prePopulateForm(btn) {
   const clientProfileId = btn.dataset.profileid;
 
@@ -55,4 +59,9 @@ async function prePopulateForm(btn) {
   bulkMaxElement.value = config.bulkWarning;
   cartWarningElement.value = config.cartWarning;
   cartMaxElement.value = config.cartMax;
+}
+
+function adaptFormForEditing() {
+  const btnElement = modalElement.querySelector('.btn-primary');
+  btnElement.textContent = 'Edit profile';
 }
