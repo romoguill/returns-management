@@ -19,12 +19,6 @@ async function deleteProfile(btn) {
   btn.parentElement.parentElement.parentElement.remove();
 }
 
-async function getAllProfiles() {
-  const response = await fetch('/configuration/api/profiles');
-  const profiles = await response.json();
-  return profiles;
-}
-
 deleteConfigurationProfileBtnElements.forEach((btn) => {
   btn.addEventListener('click', () => deleteProfile(btn));
 });
