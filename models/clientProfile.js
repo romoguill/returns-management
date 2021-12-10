@@ -10,7 +10,6 @@ class ClientProfile {
     this.config = config;
 
     if (id) {
-      console.log(id.length);
       this.id = new ObjectId(id);
     }
   }

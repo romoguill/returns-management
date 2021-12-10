@@ -47,6 +47,7 @@ async function createClientProfile(req, res) {
 }
 
 async function updateClientProfile(req, res) {
+  console.log(req.body);
   const { client, config } = req.body;
   const clientProfile = new ClientProfile(client, config, req.params.id);
   const result = await clientProfile.save();

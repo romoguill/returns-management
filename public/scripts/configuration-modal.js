@@ -7,8 +7,7 @@ const backdropElement = document.getElementById('backdrop');
 
 // Inputs from the form. Used to pre populate the edit functionality
 const clientInputElement = document.getElementById('client');
-const containerWarningInputElement =
-  document.getElementById('containerWarning');
+const containerWarningElement = document.getElementById('containerWarning');
 const containerMaxElement = document.getElementById('containerMax');
 const bulkWarningElement = document.getElementById('bulkWarning');
 const bulkMaxElement = document.getElementById('bulkMax');
@@ -25,8 +24,10 @@ btnOpenElement.addEventListener('click', () => {
 btnsEditElements.forEach((btn) => {
   btn.addEventListener('click', () => {
     // Use the data already stored to populate the form
-    prePopulateForm(btn);
-    adaptFormForEditing();
+    const clientProfileId = btn.dataset.profileid;
+
+    prePopulateForm(clientProfileId);
+    adaptFormForEditing(clientProfileId);
 
     modalElement.style.display = 'block';
     backdropElement.style.display = 'block';
@@ -44,16 +45,14 @@ backdropElement.addEventListener('click', () => {
 });
 
 // Get the info stored via AJAX call to api and populate form
-async function prePopulateForm(btn) {
-  const clientProfileId = btn.dataset.profileid;
-
+async function prePopulateForm(clientProfileId) {
   const response = await fetch(
     `/configuration/api/profiles/${clientProfileId}`
   );
   const { client, config } = await response.json();
 
   clientInputElement.value = client;
-  containerWarningInputElement.value = config.containerWarning;
+  containerWarningElement.value = config.containerWarning;
   containerMaxElement.value = config.containerMax;
   bulkWarningElement.value = config.bulkWarning;
   bulkMaxElement.value = config.bulkWarning;
@@ -61,7 +60,35 @@ async function prePopulateForm(btn) {
   cartMaxElement.value = config.cartMax;
 }
 
-function adaptFormForEditing() {
+function adaptFormForEditing(clientProfileId) {
   const btnElement = modalElement.querySelector('.btn-primary');
   btnElement.textContent = 'Edit profile';
+
+  modalElement.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Prepare the request body to be sent via AJAX
+    const client = clientInputElement.value;
+    const config = {
+      containerWarning: containerWarningElement.value,
+      containerMax: containerMaxElement.value,
+      bulkWarning: bulkWarningElement.value,
+      bulkMax: bulkMaxElement.value,
+      cartWarning: cartWarningElement.value,
+      cartMax: cartMaxElement.value,
+    };
+
+    await fetch(`/configuration/api/profiles/${clientProfileId}/edit`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        client,
+        config,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    location.reload();
+  });
 }
