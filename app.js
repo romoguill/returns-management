@@ -14,6 +14,7 @@ const movementsRoute = require('./routes/movementsRoute');
 const configurationRoute = require('./routes/configurationRoute');
 const dashboardRoute = require('./routes/dashboardRoute');
 const authRoute = require('./routes/authRoute');
+const baseRoutes = require('./routes/baseRoutes');
 
 const app = express();
 
@@ -39,6 +40,7 @@ app.use(expressSession(sessionConfig));
 
 // Routes Middleware
 app.use(authRoute);
+app.use(authMiddleware, baseRoutes);
 app.use(authMiddleware, dashboardRoute);
 app.use(authMiddleware, movementsRoute);
 app.use(authMiddleware, configurationRoute);

@@ -1,28 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Returns Management</title>
 
-    <link rel="stylesheet" href="styles/shared.css" />
-    <link rel="stylesheet" href="styles/variables.css" />
-    <link rel="stylesheet" href="styles/header.css" />
-    <link rel="stylesheet" href="styles/about.css" />
-  </head>
-  <body>
-    <header id="header__main">
-      <h1><a href="#">Returns Management</a></h1>
-      <nav id="nav__main">
-        <ul>
-          <li><a href="index.html">Dashboard</a></li>
-          <li><a href="movements.html">Movements</a></li>
-          <li><a href="configuration.html">Configuration</a></li>
-          <li><a href="about.html" class="active">About</a></li>
-        </ul>
-      </nav>
-    </header>
+<head>
+  <%- include('partials/head') %>
+
+    <link rel="stylesheet" href="/styles/about.css" />
+</head>
+
+<body>
+  <%- include('partials/header', {activeItem: "about" }) %>
+
     <main class="basic-main">
       <section id="tool-description">
         <h2>Tool description</h2>
@@ -68,5 +55,6 @@
         please contact the admin at <span>romoguill@gmail.com</span>
       </section>
     </main>
-  </body>
+</body>
+
 </html>
