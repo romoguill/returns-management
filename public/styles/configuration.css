@@ -2,7 +2,7 @@
   display: block;
 }
 
-#configuration .filters__container form .form__filters {
+#configuration .filters__container form .form__control {
   width: 300px;
   margin: 0 auto;
 }

@@ -10,7 +10,6 @@ async function renderConfiguration(req, res) {
 async function getClientProfiles(req, res) {
   const clientProfiles = await ClientProfile.fetchAll();
   console.log(clientProfiles);
-  // res.render('configuration', { clientProfiles });
   res.json(clientProfiles);
 }
 
