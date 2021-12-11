@@ -1,9 +1,9 @@
-const deleteConfigurationProfileBtnElements = document.querySelectorAll(
-  '.btn__delete-client-profile'
-);
-
 const clientFilterElement = document.getElementById('client-filter');
 const rowsElements = document.querySelectorAll('tbody tr');
+
+let rowsArray = Array.from(rowsElements);
+console.log(rowsArray);
+
 const tbodyElement = document.querySelector('tbody');
 
 // Create delete handler for each config profile
@@ -20,17 +20,22 @@ async function deleteProfile(btn) {
   }
 
   // Remove the table row from the DOM
-  btn.parentElement.parentElement.parentElement.remove();
+  const deletedElement = btn.parentElement.parentElement.parentElement.remove();
+  console.log(deletedElement);
 }
 
 // Apply delete to all elements
-deleteConfigurationProfileBtnElements.forEach((btn) => {
-  btn.addEventListener('click', () => deleteProfile(btn));
-});
+function addDeleteFunctionality() {
+  const deleteConfigurationProfileBtnElements = document.querySelectorAll(
+    '.btn__delete-client-profile'
+  );
+  deleteConfigurationProfileBtnElements.forEach((btn) => {
+    btn.addEventListener('click', () => deleteProfile(btn));
+  });
+}
 
 function filterByClient(e) {
   const client = e.target.value;
-  const rowsArray = Array.from(rowsElements);
 
   const filteredRows = rowsArray.filter((row) => {
     return row.firstElementChild.textContent
@@ -38,8 +43,6 @@ function filterByClient(e) {
       .toLowerCase()
       .includes(client.toLowerCase());
   });
-
-  console.log(filteredRows);
 
   let filteredClientTemplate = '';
   filteredRows.forEach((row) => {
@@ -67,13 +70,21 @@ function filterByClient(e) {
           ${row.children[6].textContent.trim()}
         </td>
         <td>
-          ${row.children[7].textContent.trim()}
+          ${row.children[7].innerHTML}
         </td>
       </tr>
     `;
-
-    tbodyElement.innerHTML = filteredClientTemplate;
   });
+
+  // Inject the template with the filtered rows
+  tbodyElement.innerHTML = filteredClientTemplate;
+
+  // Since btn are re rendered, the event listeners must be associated again
+  addEditFunctionality();
+  addDeleteFunctionality();
 }
+
+// Call to give the trash btn the delete functionality
+addDeleteFunctionality();
 
 clientFilterElement.addEventListener('input', (e) => filterByClient(e));

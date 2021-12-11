@@ -21,18 +21,20 @@ btnOpenElement.addEventListener('click', () => {
 });
 
 // for each edit btn icon open the same modal form
-btnsEditElements.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    // Use the data already stored to populate the form
-    const clientProfileId = btn.dataset.profileid;
+function addEditFunctionality() {
+  btnsEditElements.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      // Use the data already stored to populate the form
+      const clientProfileId = btn.dataset.profileid;
 
-    prePopulateForm(clientProfileId);
-    adaptFormForEditing(clientProfileId);
+      prePopulateForm(clientProfileId);
+      adaptFormForEditing(clientProfileId);
 
-    modalElement.style.display = 'block';
-    backdropElement.style.display = 'block';
+      modalElement.style.display = 'block';
+      backdropElement.style.display = 'block';
+    });
   });
-});
+}
 
 btnCancelElement.addEventListener('click', () => {
   modalElement.style.display = 'none';
@@ -60,6 +62,7 @@ async function prePopulateForm(clientProfileId) {
   cartMaxElement.value = config.cartMax;
 }
 
+// Reuse the form for adding a profile, to also be capable of editing an existing one
 function adaptFormForEditing(clientProfileId) {
   const btnElement = modalElement.querySelector('.btn-primary');
   btnElement.textContent = 'Edit profile';
@@ -92,3 +95,6 @@ function adaptFormForEditing(clientProfileId) {
     location.reload();
   });
 }
+
+// Call to add the event listener to the edit buttons
+addEditFunctionality();
