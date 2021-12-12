@@ -1,7 +1,6 @@
 // Elements for modal
 const modalElement = document.getElementById('form__modal');
 const btnOpenElement = document.getElementById('button__create-config');
-const btnsEditElements = document.querySelectorAll('.btn__edit-client-profile');
 const btnCancelElement = document.getElementById('btn-cancel');
 const backdropElement = document.getElementById('backdrop');
 
@@ -22,7 +21,11 @@ btnOpenElement.addEventListener('click', () => {
 
 // for each edit btn icon open the same modal form
 function addEditFunctionality() {
+  const btnsEditElements = document.querySelectorAll(
+    '.btn__edit-client-profile'
+  );
   btnsEditElements.forEach((btn) => {
+    console.log('adding edit');
     btn.addEventListener('click', () => {
       // Use the data already stored to populate the form
       const clientProfileId = btn.dataset.profileid;
