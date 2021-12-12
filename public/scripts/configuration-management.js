@@ -2,7 +2,6 @@ const clientFilterElement = document.getElementById('client-filter');
 const rowsElements = document.querySelectorAll('tbody tr');
 
 let rowsArray = Array.from(rowsElements);
-console.log(rowsArray);
 
 const tbodyElement = document.querySelector('tbody');
 
@@ -20,8 +19,13 @@ async function deleteProfile(btn) {
   }
 
   // Remove the table row from the DOM
-  const deletedElement = btn.parentElement.parentElement.parentElement.remove();
-  console.log(deletedElement);
+  btn.parentElement.parentElement.parentElement.remove();
+
+  // Remove row from rowsArray so that it coincides with data in the DB
+  const idOfRowDeleted = rowsArray.findIndex((row) =>
+    row.innerHTML.includes(btn.dataset.profileid)
+  );
+  rowsArray.splice(idOfRowDeleted, 1);
 }
 
 // Apply delete to all elements
