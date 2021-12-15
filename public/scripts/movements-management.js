@@ -14,6 +14,13 @@ const filters = {};
 function applyFilters() {
   for (const row of movementsArray) {
     if (
+      (filters.startDate &&
+        Date.parse(row.getElementsByTagName('td')[0].textContent.trim()) <
+          Date.parse(filters.startDate)) ||
+      // add 1 day to the end date so that all inputs are filtered correctly independently of the time
+      (filters.endDate &&
+        Date.parse(row.getElementsByTagName('td')[0].textContent.trim()) >=
+          3600 * 1000 * 24 + Date.parse(filters.endDate)) ||
       (filters.productId &&
         row.getElementsByTagName('td')[1].textContent.trim() !==
           filters.productId) ||
@@ -26,12 +33,15 @@ function applyFilters() {
       (filters.status &&
         row.getElementsByTagName('td')[4].textContent.trim() !== filters.status)
     ) {
+      console.log(
+        Date.parse(row.getElementsByTagName('td')[0].textContent.trim()),
+        Date.parse(filters.endDate)
+      );
       row.style.display = 'none';
     } else {
       row.style.display = 'table-row';
     }
   }
-  console.log(movementsArray);
 }
 
 filterProductIdElement.addEventListener('input', (e) => {
@@ -51,5 +61,16 @@ filterClientElement.addEventListener('input', (e) => {
 
 filterStatusElement.addEventListener('input', (e) => {
   filters.status = e.target.value;
+  applyFilters();
+});
+
+filterDateStartElement.addEventListener('input', (e) => {
+  filters.startDate = e.target.value;
+  console.log(Date.parse(filters.startDate));
+  applyFilters();
+});
+
+filterDateEndElement.addEventListener('input', (e) => {
+  filters.endDate = e.target.value;
   applyFilters();
 });
