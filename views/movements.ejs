@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('partials/head') %>
+
+<head>
+  <%- include('partials/head') %>
     <link rel="stylesheet" href="/styles/header.css" />
-    <link rel="stylesheet" href="/styles/table.css" />
+    <link rel="stylesheet" href="/styles/filters-base.css">
+    <link rel="stylesheet" href="/styles/table-base.css" />
     <link rel="stylesheet" href="/styles/movements.css">
 
     <script src="https://kit.fontawesome.com/f70dfefa83.js" crossorigin="anonymous"></script>
     <script src="/scripts/movements-modal.js" defer></script>
-  </head>
-  <body>
-    <%- include('partials/header', {activeItem: "movements"}) %>
+    <script src="/scripts/movements-management.js" defer></script>
+</head>
+
+<body>
+  <%- include('partials/header', {activeItem: "movements" }) %>
 
     <!-- Div used for backdrop when the modal is open -->
     <div id="backdrop"></div>
@@ -27,16 +31,16 @@
               <label for="client">Client</label>
               <input type="text" name="client" id="client" />
             </div>
-            <div class="date__filters">
-              <div class="form__filters">
-                <label for="dateStart">Date Start</label>
-                <input type="date" name="dateStart" id="dateStart" />
-              </div>
-              <div class="form__filters">
-                <label for="dateEnd">Date End</label>
-                <input type="date" name="dateEnd" id="dateEnd" />
-              </div>
+
+            <div class="form__filters filter__dateStart">
+              <label for="dateStart">Date Start</label>
+              <input type="date" name="dateStart" id="dateStart" />
             </div>
+            <div class="form__filters filter__dateEnd">
+              <label for="dateEnd">Date End</label>
+              <input type="date" name="dateEnd" id="dateEnd" />
+            </div>
+
             <div class="form__filters">
               <label for="flow">Flow</label>
               <input type="text" name="flow" id="flow" />
@@ -48,24 +52,58 @@
           </form>
         </div>
         <div class="table__container">
-          <div class="table">
+          <!-- <div class="table">
             <span class="table__header">Date</span>
             <span class="table__header">Product ID</span>
             <span class="table__header">Client</span>
             <span class="table__header">Flow</span>
             <span class="table__header">Status</span>
-            <% let counter = 0; for (const movement of movements) { %>
-            <span class=<%= counter % 2 === 0 && "dark" %>
-              ><%= movement.date.toLocaleDateString('en-US', { day: '2-digit',
-              month: '2-digit', year: 'numeric' }) %></span
-            >
-            <span class=<%= counter % 2 === 0 && "dark" %>><%= movement.productId %></span>
-            <span class=<%= counter % 2 === 0 && "dark" %>><%= movement.client %></span>
-            <span class=<%= counter % 2 === 0 && "dark" %>><%= movement.flow %></span>
-            <span class=<%= counter % 2 === 0 && "dark" %>></span>
-            <% counter++ %>
-            <% }; %>
-          </div>
+            <% let counter=0; for (const movement of movements) { %>
+              <span class=<%=counter % 2===0 && "dark" %>
+                ><%= movement.date.toLocaleDateString('en-US', { day: '2-digit' , month: '2-digit' , year: 'numeric' })
+                  %></span>
+              <span class=<%=counter % 2===0 && "dark" %>><%= movement.productId %></span>
+              <span class=<%=counter % 2===0 && "dark" %>><%= movement.client %></span>
+              <span class=<%=counter % 2===0 && "dark" %>><%= movement.flow %></span>
+              <span class=<%=counter % 2===0 && "dark" %>></span>
+              <% counter++ %>
+                <% }; %>
+          </div> -->
+
+
+          <table id="table__movements">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Product ID</th>
+                <th>Client</th>
+                <th>Flow</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for (const movement of movements) { %>
+                <tr>
+                  <td>
+                    <%= movement.date.toLocaleDateString('en-US', { day: '2-digit' , month: '2-digit' , year: 'numeric'
+                      }) %>
+                  </td>
+                  <td>
+                    <%= movement.productId %>
+                  </td>
+                  <td>
+                    <%= movement.client %>
+                  </td>
+                  <td>
+                    <%= movement.flow %>
+                  </td>
+                  <td>
+                    <%= movement.status %>
+                  </td>
+                </tr>
+                <% } %>
+            </tbody>
+          </table>
         </div>
       </section>
 
@@ -95,5 +133,6 @@
       </aside>
 
     </main>
-  </body>
+</body>
+
 </html>

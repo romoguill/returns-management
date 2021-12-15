@@ -21,6 +21,21 @@ body {
   transform: scale(0.98);
 }
 
+/* FILTERS */
+.filters__container form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 20px;
+}
+
+.filters__container form .filter__dateStart {
+  order: -2;
+}
+
+.filters__container form .filter__dateEnd {
+  order: 0;
+}
+
 /* MODAL */
 
 #form__modal {

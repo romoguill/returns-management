@@ -28,7 +28,7 @@ function addEditFunctionality() {
     console.log('adding edit');
     btn.addEventListener('click', () => {
       // Use the data already stored to populate the form
-      const clientProfileId = btn.dataset.profileid;
+      const clientProfileId = btn.dataset.profileid;    
 
       prePopulateForm(clientProfileId);
       adaptFormForEditing(clientProfileId);
