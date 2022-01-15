@@ -6,6 +6,8 @@ const expressSession = require('express-session');
 const db = require('./data/database');
 const createSessionConfig = require('./utils/session-config');
 
+const errorController = require('./controllers/errorController');
+
 // Middlewares
 const authMiddleware = require('./middlewares/authMiddleware');
 
@@ -18,7 +20,7 @@ const baseRoutes = require('./routes/baseRoutes');
 
 const app = express();
 
-const PORT = 3000;
+const PORT = 4000;
 
 // Create the session config object
 const sessionConfig = createSessionConfig();
@@ -44,6 +46,8 @@ app.use(authMiddleware, baseRoutes);
 app.use(authMiddleware, dashboardRoute);
 app.use(authMiddleware, movementsRoute);
 app.use(authMiddleware, configurationRoute);
+
+app.use(errorController.get404);
 
 db.connectToDatabase().then(() => {
   app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));

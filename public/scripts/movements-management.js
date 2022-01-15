@@ -22,16 +22,17 @@ function applyFilters() {
         Date.parse(row.getElementsByTagName('td')[0].textContent.trim()) >=
           3600 * 1000 * 24 + Date.parse(filters.endDate)) ||
       (filters.productId &&
-        row.getElementsByTagName('td')[1].textContent.trim() !==
-          filters.productId) ||
+        row.getElementsByTagName('td')[1].textContent.trim().toLowerCase() !==
+          filters.productId.toLowerCase()) ||
       (filters.client &&
-        row.getElementsByTagName('td')[2].textContent.trim() !==
-          filters.client) ||
+        row.getElementsByTagName('td')[2].textContent.trim().toLowerCase() !==
+          filters.client.toLowerCase()) ||
       (filters.flow &&
-        row.getElementsByTagName('td')[3].textContent.trim() !==
-          filters.flow) ||
+        row.getElementsByTagName('td')[3].textContent.trim().toLowerCase() !==
+          filters.flow.toLowerCase()) ||
       (filters.status &&
-        row.getElementsByTagName('td')[4].textContent.trim() !== filters.status)
+        row.getElementsByTagName('td')[4].textContent.trim().toLowerCase() !==
+          filters.status.toLowerCase())
     ) {
       console.log(
         Date.parse(row.getElementsByTagName('td')[0].textContent.trim()),
