@@ -18,11 +18,8 @@ class ClientProfile {
     return await db.getDb().collection('clientProfiles').find({}).toArray();
   }
 
-  async fetchProfile() {
-    return await db
-      .getDb()
-      .collection('clientProfiles')
-      .findOne({ _id: this.id });
+  static async fetchProfile(client) {
+    return await db.getDb().collection('clientProfiles').findOne({ client });
   }
 
   async save() {

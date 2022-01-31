@@ -20,7 +20,7 @@ const baseRoutes = require('./routes/baseRoutes');
 
 const app = express();
 
-const PORT = 4000;
+const PORT = 4001;
 
 // Create the session config object
 const sessionConfig = createSessionConfig();
