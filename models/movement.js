@@ -50,14 +50,27 @@ class Movement {
     }
   }
 
-  async getFirstUnsettledMovement(item) {
+  static getAllUnsettledOutboundMovements() {
     return db
       .getDb()
       .collection('movements')
-      .findOne({ status: { $ne: 'Returned' }, productId: item });
+      .find({ status: { $ne: 'Returned' }, flow: 'Outbound' })
+      .toArray();
   }
 
-  async calculateStatus(clientProfile) {
+  static getFirstUnsettledOutboundMovement(productId, client) {
+    return db
+      .getDb()
+      .collection('movements')
+      .findOne({
+        status: { $ne: 'Returned' },
+        productId,
+        flow: 'Outbound',
+        client,
+      });
+  }
+
+  calculateStatus(clientProfile) {
     // Delay will be calculated as the difference in days from today and the movement date
     const delayDays = (new Date() - this.date) / (1000 * 60 * 60 * 24);
 
@@ -84,7 +97,14 @@ class Movement {
       daysWarning = cartWarning;
       daysMax = cartMax;
     }
-    console.log('first movement', await this.getFirstUnsettledMovement('002'));
+
+    if (delayDays <= daysWarning) {
+      return 'Ok';
+    } else if (delayDays <= daysMax) {
+      return 'Warning';
+    } else {
+      return 'Exceeded';
+    }
   }
 }
 

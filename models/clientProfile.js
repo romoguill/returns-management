@@ -15,7 +15,7 @@ class ClientProfile {
   }
 
   static async fetchAll() {
-    return await db.getDb().collection('clientProfiles').find({}).toArray();
+    return await db.getDb().collection('clientProfiles').find({});
   }
 
   static async fetchProfile(client) {
