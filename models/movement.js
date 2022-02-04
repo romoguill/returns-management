@@ -24,7 +24,7 @@ class Movement {
   async save() {
     // Check if movement has an id which means that already exists. If it does then update with the new info, else create a new one.
     if (this.id) {
-      const result = await db
+      await db
         .getDb()
         .collection('movements')
         .updateOne(
@@ -39,8 +39,6 @@ class Movement {
             },
           }
         );
-      console.log(result);
-      console.log('Product saved');
     } else {
       await db.getDb().collection('movements').insertOne({
         productId: this.productId,

@@ -17,7 +17,7 @@ async function getMovements(req, res) {
 
     profile = await ClientProfile.fetchProfile(movement.client);
 
-    // movement.updateStatus(profile);
+    movement.updateStatus(profile);
   }
 
   const movements = await Movement.fetchAll();
@@ -38,7 +38,7 @@ async function createMovement(req, res) {
 
     let firstUnsettledOutboundMovement;
     if (movement) {
-      movement.status = 'Recieved';
+      movement.status = 'Returned';
 
       firstUnsettledOutboundMovement = new Movement(
         movement.productId,
@@ -54,8 +54,6 @@ async function createMovement(req, res) {
       newMovement.status = newMovement.calculateStatus();
     }
 
-    console.log(firstUnsettledOutboundMovement);
-    console.log(newMovement);
     await firstUnsettledOutboundMovement.save();
     await newMovement.save();
     res.redirect('/movements');
