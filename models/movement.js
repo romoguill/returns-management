@@ -24,21 +24,23 @@ class Movement {
   async save() {
     // Check if movement has an id which means that already exists. If it does then update with the new info, else create a new one.
     if (this.id) {
-      const movementId = new ObjectId(this.id);
-      await db
+      const result = await db
         .getDb()
         .collection('movements')
         .updateOne(
-          { _id: orderId },
+          { _id: this.id },
           {
             $set: {
               productId: this.productId,
               client: this.client,
               flow: this.flow,
               date: this.date,
+              status: this.status,
             },
           }
         );
+      console.log(result);
+      console.log('Product saved');
     } else {
       await db.getDb().collection('movements').insertOne({
         productId: this.productId,
@@ -105,6 +107,12 @@ class Movement {
     } else {
       return 'Exceeded';
     }
+  }
+
+  async updateStatus(profile) {
+    const status = this.calculateStatus(profile);
+    this.status = status;
+    this.save();
   }
 }
 
