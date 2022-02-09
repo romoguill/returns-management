@@ -25,11 +25,23 @@
           <form action="">
             <div class="form__filters">
               <label for="productId">Product ID</label>
-              <input type="text" name="productId" id="productId" />
+              <select name="productId" id="productId">
+                <option value=""></option>
+                <option value="001">001</option>
+                <option value="002">002</option>
+                <option value="003">003</option>
+              </select>
             </div>
             <div class="form__filters">
               <label for="client">Client</label>
-              <input type="text" name="client" id="client" />
+              <select name="client" id="client">
+                <option value=""></option>
+                <% for (const profile of profiles) { %>
+                  <option value="<%= profile.client %>">
+                    <%= profile.client %>
+                  </option>
+                  <% } %>
+              </select>
             </div>
 
             <div class="form__filters filter__dateStart">
@@ -43,11 +55,22 @@
 
             <div class="form__filters">
               <label for="flow">Flow</label>
-              <input type="text" name="flow" id="flow" />
+              <select name="flow" id="flow">
+                <option value=""></option>
+                <option value="Inbound">Inbound</option>
+                <option value="Outbound">Outbound</option>
+              </select>
             </div>
             <div class="form__filters">
               <label for="status">Status</label>
-              <input type="text" name="status" id="status" />
+              <select name="status" id="status">
+                <option value=""></option>
+                <option value="Exceeded">Exceeded</option>
+                <option value="Ok">OK</option>
+                <option value="Returned">Returned</option>
+                <option value="Settled">Settled</option>
+                <option value="Warning">Warning</option>
+              </select>
             </div>
           </form>
         </div>

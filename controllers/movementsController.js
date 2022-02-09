@@ -22,7 +22,10 @@ async function getMovements(req, res) {
 
   const movements = await Movement.fetchAll();
 
-  res.render('movements', { movements });
+  // pass down to render the clients so they can be displayed in the dropdown filter
+  const profiles = await ClientProfile.fetchAll();
+
+  res.render('movements', { movements, profiles });
 }
 
 async function createMovement(req, res) {
