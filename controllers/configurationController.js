@@ -4,6 +4,7 @@ const ClientProfile = require('../models/clientProfile');
 
 async function renderConfiguration(req, res) {
   const clientProfiles = await ClientProfile.fetchAll();
+  console.log(clientProfiles);
   res.render('configuration', { clientProfiles });
 }
 

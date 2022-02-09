@@ -25,16 +25,19 @@
 
 #form .form__control input,
 #form .form__control label,
-#form .form__control textarea {
+#form .form__control textarea,
+#form .form__control select {
   width: 100%;
 }
 
-#form .form__control label {
+#form .form__control label,
+#form .form__control select {
   font-weight: bold;
   margin: var(--space-1) 0;
 }
 
-#form .form__control input {
+#form .form__control input,
+#form .form__control select {
   border-radius: var(--border-radius-small);
   border: none;
   padding: var(--space-1);

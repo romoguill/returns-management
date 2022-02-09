@@ -27,7 +27,15 @@
           <form id="form__filter" action="">
             <div class="form__control">
               <label for="client-filter">Client</label>
-              <input type="text" name="client-filter" id="client-filter" />
+              <select name="client-filter" id="client-filter">
+                <option value=""></option>
+                <% for (let profile of clientProfiles) { %>
+                  <option value="<%= profile.client %>">
+                    <%= profile.client %>
+                  </option>
+
+                  <% } %>
+              </select>
             </div>
           </form>
         </div>
